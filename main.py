@@ -6,17 +6,29 @@ from datasets import load_dataset
 pdf = FPDF()
 squad_dataset = load_dataset('squad')
 
+new_line = lambda x, indent: x.write(indent, txt="\n")
+N_TABS = 4
+
 def create_page(spacing=1):
     pdf.add_page()
-
+    
     pdf.set_font("Arial", size=7)
     context = str(squad_dataset['train'][0]['context']).split('.')
     
-    pdf.cell(2)
-    for id, line in enumerate(context):
-        line = line + "."
-        pdf.write(5, txt=line)
-
+    author = "Username"
+    create_date = "02.02.02"
+    change_date = "03.03.03"
+    pdf.write(3, txt=f"Author: {author}")
+    new_line(pdf, 3)
+    pdf.write(3, txt=f"Creation date: {create_date}")
+    new_line(pdf, 3)
+    pdf.write(3, txt=f"Changing date: {change_date}")
+    
+    new_line(pdf, 5)
+    
+    pdf.write(3, txt="def hello_word():\n")
+    pdf.write(3, txt= N_TABS * " " + "print(\"Hello from test world\")")
+    
     file_name = "test_file"
     pdf.output(f"test/{file_name}.pdf")
 
