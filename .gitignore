@@ -21,6 +21,8 @@ sdist/
 var/
 wheels/
 test/
+test_output_pdf/
+test_input_libs/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
