@@ -1,6 +1,7 @@
-import structs
-import utils
+import creator
 import os
+import structs
+import test_code_parser
 
 from fpdf import FPDF
 from datasets import load_dataset
@@ -9,6 +10,8 @@ pdf = FPDF()
 squad_dataset = load_dataset('squad')
 
 if __name__ == "__main__":
-     if not os.path.exists("test"): os.mkdir("test", mode=0o666)
+     if not os.path.exists(f"{structs.DIR_OUTPUT}"): os.mkdir(f"{structs.DIR_OUTPUT}", mode=0o666)
      
-     utils.create_page(pdf, spacing=1)
+     script = test_code_parser.test_parse_python_script()
+     
+     creator.create_page(pdf, script, spacing=1)
