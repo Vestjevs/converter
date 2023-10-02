@@ -26,8 +26,20 @@ def create_page(pdf, script: list, spacing=1) -> None:
     
     add_author_data(pdf, make_struct_author())
     
+    #  "functions" : [],
+    # "class" : [],
+    # "comments" : [],
+    # "multiline_comments" : []
     new_line(pdf, 5)
-    for line in script:
+    for line in script["comments"]:
+        add_code(pdf, line)
+    
+    new_line(pdf, 5)
+    for line in script["functions"]:
+        add_code(pdf, line)
+    
+    new_line(pdf, 5)
+    for line in script["class"]:
         add_code(pdf, line)
     
     pdf.output(f"{structs.DIR_OUTPUT}/{structs.FILE_NAME}.pdf")
