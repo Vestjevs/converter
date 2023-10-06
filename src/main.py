@@ -12,6 +12,5 @@ squad_dataset = load_dataset('squad')
 if __name__ == "__main__":
      if not os.path.exists(f"{structs.DIR_OUTPUT}"): os.mkdir(f"{structs.DIR_OUTPUT}", mode=0o666)
      
-     script = test_code_parser.test_parse_python_script()
+     test_code_parser.test_parse_py_function()
      
-     creator.create_page(pdf, script, spacing=1)
