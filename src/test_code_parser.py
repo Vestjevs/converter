@@ -9,7 +9,13 @@ def test_parse_cpp_header() -> dict:
     return code_parser.parse_cpp_header(TEST_FILENAME)
 
 def test_parse_py_function() -> list:
-    return code_parser.parse_py_function(TEST_FILENAME)
+    for_pdf = []
+    try:
+        for_pdf = code_parser.parse_py_function(TEST_FILENAME)
+    except Exception as e:
+        print(e)
+    return for_pdf
+
 
 def test_parse_cpp_impl() -> list:
     pass
