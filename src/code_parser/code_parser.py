@@ -119,6 +119,9 @@ def parse_signature_func_cpp(intro: str) -> None:
     arguments = ""
     start = 0
     end = 0
+    
+    intro = intro.replace('\n', '')
+    
     while intro[end] != ' ' and end < len(intro): end += 1
     if start != end:
         return_type += intro[start:end]
@@ -145,10 +148,10 @@ def parse_signature_func_cpp(intro: str) -> None:
     else:
         raise Exception("Invalid name") # !tbd: rewrite checks
     
+    return {
+        "return_type" : return_type,
+        "name": name,
+        "arguments": arguments
+    }
     
-    print(f"Return type: {return_type}")
-    print(f"Function name: {name}")
-    print(f"Function arguments: {arguments}")
-     
-        
     

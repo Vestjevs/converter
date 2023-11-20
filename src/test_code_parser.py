@@ -26,10 +26,15 @@ def test_parse_cpp_impl() -> list:
         print(e)
     return res
 
+def print_signature(signature: dict) -> None:
+    return_type = signature["return_type"]
+    name = signature["name"]
+    arguments = signature["arguments"]
+    print(f"Return type: {return_type}\nFunction name: {name}\nFunction arguments: {arguments}\n")
 
 def test_parse_cpp_func_intro() -> None:
-    code_parser.parse_signature_func_cpp("int main(int a)")
-    code_parser.parse_signature_func_cpp("double foo(const double* a)")
-    code_parser.parse_signature_func_cpp("float bar(float* a, int b, int c)")
-    code_parser.parse_signature_func_cpp("Type* main(int a, int i, int j, void* void_p)")
-    pass
+    print_signature(code_parser.parse_signature_func_cpp("constint main \n( int a )"))
+    print_signature(code_parser.parse_signature_func_cpp("double foo \n( const double* a )"))
+    print_signature(code_parser.parse_signature_func_cpp("float bar \n( float* a, int b, int c )"))
+    print_signature(code_parser.parse_signature_func_cpp("Type* \nmain ( int a, int i, int j, void* void_p )"))
+    
